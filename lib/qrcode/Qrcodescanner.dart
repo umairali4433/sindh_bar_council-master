@@ -51,57 +51,51 @@ class _QRViewExampleState extends State<QRViewExample> {
       body: flag?Center(child:Text('Please wait')):Column(
         children: <Widget>[
           Expanded(flex: 4, child: _buildQrView(context)),
-          Expanded(
-            flex: 1,
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                    const Text('Scan Your QR Code'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.toggleFlash();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getFlashStatus(),
-                              builder: (context, snapshot) {
-                                return snapshot.data?Text('Flash:off'):Text('Flash:On');
-                              },
-                            )),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                              await controller?.flipCamera();
-                              setState(() {});
-                            },
-                            child: FutureBuilder(
-                              future: controller?.getCameraInfo(),
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return Text(
-                                      'Camera facing ${describeEnum(snapshot.data)}');
-                                } else {
-                                  return const Text('loading');
-                                }
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          )
+          // Expanded(
+          //   flex: 1,
+          //   child: FittedBox(
+          //     fit: BoxFit.contain,
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //       children: <Widget>[
+          //           const Text('Scan Your QR Code'),
+          //         Row(
+          //           mainAxisAlignment: MainAxisAlignment.center,
+          //           crossAxisAlignment: CrossAxisAlignment.center,
+          //           children: <Widget>[
+          //             Container(
+          //               margin: const EdgeInsets.all(8),
+          //               child: ElevatedButton(
+          //                   onPressed: () async {
+          //                     await controller?.toggleFlash();
+          //                     setState(() {});
+          //                   },
+          //                   child: FutureBuilder(
+          //                     future: controller?.getFlashStatus(),
+          //                     builder: (context, snapshot) {
+          //
+          //                     },
+          //                   )),
+          //             ),
+          //             // Container(
+          //             //   margin: const EdgeInsets.all(8),
+          //             //   child: ElevatedButton(
+          //             //       onPressed: () async {
+          //             //         await controller?.flipCamera();
+          //             //         setState(() {});
+          //             //       },
+          //             //       child: FutureBuilder(
+          //             //         future: controller?.getCameraInfo(),
+          //             //         builder: (context, snapshot) {
+          //             //         },
+          //             //       )),
+          //             // )
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

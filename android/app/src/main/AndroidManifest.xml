@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tv.sindh_bar_council">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="sindh_bar_council"
         android:icon="@mipmap/ic_launcher">

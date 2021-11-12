@@ -13,12 +13,10 @@ final List categories = [
   {'image': path + 'ic_username.png', 'title': 'My Profile'},
   {'image': path + 'esewa.jpg', 'title': 'Dues Detail'},
   {'image': path + 'ic_payments_64_4.png', 'title': 'News'},
-  {'image': path + 'ic_transfer_32_4.png', 'title': 'Messages'},
+  {'image': path + 'ic_transfer_32_4.png', 'title': 'Biometric'},
   {'image': path + 'ic_sch_payment_64_4.png', 'title': 'Notifications'},
   {'image': path + 'ic_scan2pay_64_4.png', 'title': 'Payment'},
 ];
-
-
 final List transactions = [
   Trx(
     type: 'cwdr/',

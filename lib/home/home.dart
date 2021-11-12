@@ -49,10 +49,13 @@ class _Home_pageState extends State<Home_page> {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
-    return flag?Stack(  children: <Widget>[ Center(child:Text('Please wait'))]): Scaffold(
-      drawer: Drawermain(user.advImage,user.advName),
-      appBar: buildAppBar(),
-      body: done(deviceSize),
+    return flag?Stack(  children: <Widget>[ Center(child:Text('Please wait'))]): WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        drawer: Drawermain(user.advImage,user.advName),
+        appBar: buildAppBar(),
+        body: done(deviceSize),
+      ),
     );
   }
   done(Size deviceSize){
@@ -113,6 +116,40 @@ class _Home_pageState extends State<Home_page> {
 
       // return MembersUI();
     }
+
+
+  }
+  Future<bool> _onWillPop() async {
+    if(widget.get!=0){
+      return
+        Navigator. pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => Home_page(0,'Welcome'),
+          ),
+              (route) => false,
+        );
+    }
+    else{
+      return (await showDialog(
+        context: context,
+        builder: (context) => new AlertDialog(
+          title: new Text('Are you sure?'),
+          content: new Text('Do you want to exit an App'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: new Text('No'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: new Text('Yes'),
+            ),
+          ],
+        ),
+      )) ?? false;
+    }
+
 
 
   }
