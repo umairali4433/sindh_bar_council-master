@@ -58,10 +58,6 @@ class _QRViewExampleState extends State<QRViewExample> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  if (result != null)
-                    Text(
-                        'Barcode Type: ${describeEnum(result.format)}   Data: ${result.code}')
-                  else
                     const Text('Scan Your QR Code'),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -162,12 +158,11 @@ class _QRViewExampleState extends State<QRViewExample> {
   }
 
   void getdata(String id, String disname) {
+    setState(() {
+      flag = true;
+    });
     getuserfuture =qrcodelogin(id,disname).then((value) async {
-
       if(value != null){
-        setState(() {
-          flag= false;
-        });
         Navigator. pushAndRemoveUntil(
           context,
           MaterialPageRoute(

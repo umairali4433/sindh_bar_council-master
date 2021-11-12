@@ -13,33 +13,24 @@ class Newsphoto extends StatelessWidget {
       appBar: AppBar(
         title: Text('News'),
       ),
-       body: Container(
-         width: MediaQuery.of(context).size.width,
-           height: MediaQuery.of(context).size.height,
-           decoration: BoxDecoration(
-           borderRadius: BorderRadius.circular(8.0),
-      image: DecorationImage(
-        image:imageWithLoader(context,getimage),
-        fit: BoxFit.cover,
-      ),
-    ),
-       ),
+       body: imageWithLoader(context,getimage),
 
     );
   }
 
    imageWithLoader(BuildContext context,String image) {
     return Container(
-  height: MediaQuery.of(context).size.height * 0.5,
+        height: MediaQuery.of(context).size.height,
   child: Stack(children: <Widget>[
   Center(child: CircularProgressIndicator()),
   Center(
   child: FadeInImage(
-  placeholder: AssetImage('assets/images/logo.gif'),
+  placeholder: AssetImage('assets/images/download.png'),
   image: NetworkImage(
       image
   ),
   width: MediaQuery.of(context).size.width,
+
   fit: BoxFit.cover),
   ),
   ]));
