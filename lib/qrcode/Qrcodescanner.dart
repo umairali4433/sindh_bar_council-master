@@ -51,6 +51,11 @@ class _QRViewExampleState extends State<QRViewExample> {
       body: flag?Center(child:Text('Please wait')):Column(
         children: <Widget>[
           Expanded(flex: 4, child: _buildQrView(context)),
+          Expanded(
+              child: Chip(
+            backgroundColor: Colors.green,
+            label:Text('Please Scan Your QR Code',style: TextStyle(color: Colors.white),),
+          ))
           // Expanded(
           //   flex: 1,
           //   child: FittedBox(

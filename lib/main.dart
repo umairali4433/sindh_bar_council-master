@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Expanded(
             child: AnimatedSplashScreen(
               splash: Image.asset('assets/images/logo.gif'),
-              nextScreen: flag?QRViewExample():Home_page(0,'Welcome'),
+              nextScreen: flag?QRViewExample():Home_page(0,'Welcomem to Sahulat'),
               splashTransition: SplashTransition.fadeTransition,
               curve: Curves.easeInBack,
 

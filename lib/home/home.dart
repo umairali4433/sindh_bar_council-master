@@ -24,6 +24,7 @@ import 'package:sindh_bar_council/drawer/Drawermain.dart';
 import 'package:sindh_bar_council/duedetail/Duedetail.dart';
 import 'package:sindh_bar_council/members/members.dart';
 import 'package:sindh_bar_council/models/Myprofilemodel.dart';
+import 'package:sindh_bar_council/payment/Payment.dart';
 
 import '../constants.dart';
 import 'TopAccountInfo.dart';
@@ -116,6 +117,15 @@ class _Home_pageState extends State<Home_page> {
     }
     else if(widget.get==12){
       return NotificationUI();
+
+      // return MembersUI();
+    }
+    else if(widget.get==13){
+      return Paymnent();
+      // return MembersUI();
+    }
+    else if(widget.get==14){
+      return Paymnent();
 
       // return MembersUI();
     }
