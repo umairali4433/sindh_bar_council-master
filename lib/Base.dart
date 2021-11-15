@@ -137,7 +137,9 @@ Future<List<SbcStaffModel>> sbc_staff() async  {
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){
-    tagObjs = sbcStaffModelFromJson(response2.body);
+    List<dynamic>  get = jsonDecode(response2.body);
+    get.removeAt(0);
+    tagObjs = sbcStaffModelFromJson(jsonEncode(get));
     return tagObjs;
   }
   else{
@@ -202,6 +204,7 @@ Future<Myprofilemodel> qrcodelogin(String id, String disname) async  {
     "dist_name":disname,
 
   };
+
   Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_reg_no.php');
   final newURI = uri.replace(queryParameters: params);
   var response2;

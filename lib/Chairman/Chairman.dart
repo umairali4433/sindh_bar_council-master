@@ -33,7 +33,7 @@ class _ChairmanState extends State<Chairman> {
           leading: CircleAvatar(
               backgroundImage: NetworkImage(registeredfirmlist[index].postImage)
           ),
-          title: Text(registeredfirmlist[index].chairmanName),
+          title: Text(registeredfirmlist[index].chairmanName,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
           subtitle: Text(registeredfirmlist[index].fromDate+' - '+registeredfirmlist[index].toDate),
         );
       },

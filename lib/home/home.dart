@@ -92,7 +92,7 @@ class _Home_pageState extends State<Home_page> {
       // return MembersUI();
     }
     else if(widget.get==8){
-      // return Sbc_staff();
+      return Sbc_staff();
       print('adsd');
       // return MembersUI();
     }
@@ -104,7 +104,10 @@ class _Home_pageState extends State<Home_page> {
       // return MembersUI();
     }
     else if(widget.get==10){
-      return Duedetail();
+      if(flag == false){
+        return Duedetail(user.advImage);
+      }
+
       // return MembersUI();
     }
     else if(widget.get==11){

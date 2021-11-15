@@ -62,7 +62,8 @@ class MapScreenState extends State<Myprofile>
                                           shape: BoxShape.circle,
                                           image: new DecorationImage(
                                             image: NetworkImage(
-                                                'https://advocates.sindhbarcouncil.org/advocate_images/naushahro-feroze/856.JPG'),
+                                            widget.myprofile.advImage
+                                            ),
                                             fit: BoxFit.cover,
                                           ),
                                         )),

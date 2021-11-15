@@ -41,13 +41,24 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.white,
-      body:AnimatedSplashScreen(
-        splash: Image.asset('assets/images/logo.gif'),
-        nextScreen: flag?QRViewExample():Home_page(0,'Welcome'),
-        splashTransition: SplashTransition.fadeTransition,
-        curve: Curves.easeInBack,
+      body:Column(
 
-        duration: 3000,
+        children: [
+          Padding(
+              padding: EdgeInsets.only(top: 400),
+              child: Text('Sahulat',style: TextStyle(fontSize: 24,),)),
+          Text('by'),
+          Expanded(
+            child: AnimatedSplashScreen(
+              splash: Image.asset('assets/images/logo.gif'),
+              nextScreen: flag?QRViewExample():Home_page(0,'Welcome'),
+              splashTransition: SplashTransition.fadeTransition,
+              curve: Curves.easeInBack,
+
+              duration: 3000,
+            ),
+          ),
+        ],
       )
 
     );
