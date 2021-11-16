@@ -2,7 +2,7 @@
     package="com.tv.sindh_bar_council">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="sindh_bar_council"
+        android:label="Sahulat"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
