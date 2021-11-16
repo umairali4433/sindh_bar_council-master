@@ -24,6 +24,7 @@ import 'package:sindh_bar_council/drawer/Drawermain.dart';
 import 'package:sindh_bar_council/duedetail/Duedetail.dart';
 import 'package:sindh_bar_council/members/members.dart';
 import 'package:sindh_bar_council/models/Myprofilemodel.dart';
+import 'package:sindh_bar_council/payment/payment.dart';
 
 import '../constants.dart';
 import 'TopAccountInfo.dart';
@@ -92,19 +93,20 @@ class _Home_pageState extends State<Home_page> {
       // return MembersUI();
     }
     else if(widget.get==8){
-      // return Sbc_staff();
-      print('adsd');
+      return Sbc_staff();
+      // print('adsd');
       // return MembersUI();
     }
     else if(widget.get==9){
       if(flag == false){
         return Myprofile(user);
       }
-
-      // return MembersUI();
     }
+
     else if(widget.get==10){
-      return Duedetail();
+      if(flag == false){
+        return Duedetail(user.preRegNo,user.disName,user.advImage);
+      }
       // return MembersUI();
     }
     else if(widget.get==11){
@@ -116,6 +118,15 @@ class _Home_pageState extends State<Home_page> {
 
       // return MembersUI();
     }
+    else if(widget.get==13){
+      return Payment();
+
+      // return MembersUI();
+    }
+    else if(widget.get==14){
+      return Payment();
+      // return MembersUI();
+    }
 
 
   }
@@ -125,7 +136,7 @@ class _Home_pageState extends State<Home_page> {
         Navigator. pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => Home_page(0,'Welcome'),
+            builder: (BuildContext context) => Home_page(0,'Welcome to Sahulat'),
           ),
               (route) => false,
         );
@@ -153,7 +164,6 @@ class _Home_pageState extends State<Home_page> {
 
 
   }
-
   Stack buildStack(Size deviceSize) {
     return Stack(
       children: <Widget>[
@@ -167,7 +177,7 @@ class _Home_pageState extends State<Home_page> {
           ),
           child: Column(
             children: <Widget>[
-              TopAccountInfo(user),
+              Center(child: TopAccountInfo(user)),
               Flexible(
                 fit: FlexFit.tight,
                 child: ListView(

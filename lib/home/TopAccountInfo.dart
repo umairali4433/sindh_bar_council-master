@@ -20,7 +20,6 @@ class TopAccountInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     return Card(
-
       elevation: 3.0,
       margin: EdgeInsets.symmetric(
         //horizontal: deviceSize.width * 0.03,
@@ -40,14 +39,7 @@ class TopAccountInfo extends StatelessWidget {
                 getdata(),
               ],
             ),
-            Container(
-              height: 8.0,
-              width: 8.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: primaryColor,
-              ),
-            ),
+
           ],
         ),
       ),
@@ -90,11 +82,6 @@ class TopAccountInfo extends StatelessWidget {
                 SizedBox(
                   width: 10.0,
                 ),
-                Icon(
-                  Icons.remove_red_eye,
-                  color: Colors.teal.shade200,
-                  size: 20.0,
-                )
               ],
             ),
 

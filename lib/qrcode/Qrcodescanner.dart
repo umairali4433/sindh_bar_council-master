@@ -33,7 +33,6 @@ class _QRViewExampleState extends State<QRViewExample> {
     // getdata('856','Naushahro Feroze');
 
   }
-
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
   @override
@@ -51,6 +50,11 @@ class _QRViewExampleState extends State<QRViewExample> {
       body: flag?Center(child:Text('Please wait')):Column(
         children: <Widget>[
           Expanded(flex: 4, child: _buildQrView(context)),
+          Expanded(flex: 1,child: Container(
+            child: Chip(
+              backgroundColor: Colors.green,
+                label: Text('Please Scan you QR Code',style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),)),
+          ),)
           // Expanded(
           //   flex: 1,
           //   child: FittedBox(
@@ -160,7 +164,7 @@ class _QRViewExampleState extends State<QRViewExample> {
         Navigator. pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) =>  Home_page(0,'Welcome'),
+            builder: (BuildContext context) =>  Home_page(0,'Welcome to Sahulat'),
           ),
               (route) => false,
         );

@@ -118,7 +118,7 @@ Future<List<Vicechairmanmodel>> vicechairman() async  {
 Future<List<ChairmanExcModel>> chairman_excmethod() async  {
   List<ChairmanExcModel> tagObjs = [];
   String geterror = '';
-  Uri uri = Uri.parse(Base_Url+vcchairmanval);
+  Uri uri = Uri.parse(Base_Url+chairman_exc);
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){
@@ -137,7 +137,11 @@ Future<List<SbcStaffModel>> sbc_staff() async  {
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){
-    tagObjs = sbcStaffModelFromJson(response2.body);
+    List<dynamic> userMap;
+    userMap = jsonDecode(response2.body);
+
+    var get = jsonEncode(userMap..removeAt(0));
+    tagObjs = sbcStaffModelFromJson(get);
     return tagObjs;
   }
   else{
@@ -162,10 +166,10 @@ Future<Myprofilemodel> myprofile() async  {
 
 }
 
-Future<DueDetailModel> duedetail() async  {
+Future<DueDetailModel> duedetail(String regid,disname) async  {
   DueDetailModel tagObjs;
   String geterror = '';
-  Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_dues.php?password=sbc!!!&&sbc_reg_no=4010&&dist_name=Hyderabad');
+  Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_dues.php?password=sbc!!!&&sbc_reg_no='+regid+'&&dist_name='+disname);
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){
@@ -233,7 +237,6 @@ Future<List<NotificationModel>> Notificationmethod() async  {
   else{
     return tagObjs;
   }
-
 }
 Future checkinterentnet() async {
   print("The statement 'this machine is connected to the Internet' is: ");

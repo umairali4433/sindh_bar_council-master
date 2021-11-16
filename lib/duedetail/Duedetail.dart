@@ -6,6 +6,10 @@ import 'package:sindh_bar_council/models/due_detail_model.dart';
 import '../Base.dart';
 
 class Duedetail extends StatefulWidget {
+  final String regid,distname,image;
+
+  Duedetail(this.regid, this.distname,this.image);
+
   @override
   MapScreenState createState() => MapScreenState();
 }
@@ -61,7 +65,7 @@ class MapScreenState extends State<Duedetail>
                                           shape: BoxShape.circle,
                                           image: new DecorationImage(
                                             image: NetworkImage(
-                                                'https://advocates.sindhbarcouncil.org/advocate_images/naushahro-feroze/856.JPG'),
+                                                widget.image),
                                             fit: BoxFit.cover,
                                           ),
                                         )),
@@ -600,7 +604,7 @@ class MapScreenState extends State<Duedetail>
   }
 
   void getdata() {
-    gettaskfuture =  duedetail().then((value) {
+    gettaskfuture =  duedetail(widget.regid,widget.distname).then((value) {
       myprofiledata = value;
       setState(() {
         flag = false;

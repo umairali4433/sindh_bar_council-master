@@ -36,16 +36,16 @@ class Sbc_staffstate extends State<Sbc_staff> {
           leading: CircleAvatar(
               backgroundImage: NetworkImage(sbcstafflist[index].postImage)
           ),
-          title: Text(sbcstafflist[index].fullName),
-          subtitle: Expanded(
-            child: Column(
-              children: [
-                sbcstafflist[index].designation==null?Text(''):Text(sbcstafflist[index].designation),
-                sbcstafflist[index].mobile==null?Text(''):Text(sbcstafflist[index].mobile),
-                sbcstafflist[index].working==null?Text(''):Text(sbcstafflist[index].working),
+          title: Text(sbcstafflist[index].fullName,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              sbcstafflist[index].designation==null?Text(''):Text(sbcstafflist[index].designation),
+              sbcstafflist[index].mobile==null?Text(''):Text(sbcstafflist[index].mobile),
+              sbcstafflist[index].working==null?Text(''):Text(sbcstafflist[index].working),
 
-              ],
-            ),
+            ],
           )
         );
       },

@@ -37,23 +37,22 @@ class _SplashScreenState extends State<SplashScreen> {
     });
 
   }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       backgroundColor: Colors.white,
       body:AnimatedSplashScreen(
-        splash: Image.asset('assets/images/logo.gif'),
-        nextScreen: flag?QRViewExample():Home_page(0,'Welcome'),
+        splash: Image.asset('assets/images/splashlogo.png',width: 50000,height: 500000,),
+        nextScreen: flag?QRViewExample():Home_page(0,'Welcome to Sahulat'),
+        splashIconSize: double.infinity,
         splashTransition: SplashTransition.fadeTransition,
         curve: Curves.easeInBack,
-
         duration: 3000,
-      )
+      ),
 
     );
   }
-
-
   Future<bool> getdata() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if(prefs.getString('userData')== null){

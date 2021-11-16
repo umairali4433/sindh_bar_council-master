@@ -50,7 +50,12 @@ class _CategoryState extends State<Category> {
           break;
 
           case 'Payment': {
-            // navigatemethod(5);
+             navigatemethod(13,'Payment');
+            //statements;
+          }
+          break;
+          case 'Biometric': {
+            navigatemethod(14,'Biometric');
             //statements;
           }
           break;

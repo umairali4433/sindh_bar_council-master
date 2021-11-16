@@ -21,7 +21,7 @@ class Categories extends StatelessWidget {
           height: 10.0,
         ),
         Heading(
-          'would you like to?',
+          'Please make a selection',
         ),
         SizedBox(
           height: 25.0,

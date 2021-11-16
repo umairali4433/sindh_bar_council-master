@@ -2,7 +2,9 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sindh_bar_council/members/members.dart';
+import 'package:sindh_bar_council/qrcode/Qrcodescanner.dart';
 
 import '../constants.dart';
 import '../constants.dart';
@@ -112,17 +114,22 @@ class Drawermain extends StatelessWidget {
                       ),
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.lock,
-                      color: Colors.white,
-                    ),
-                    title: Text(
-                      'Logout',
-                      style: TextStyle(
+                GestureDetector(
+                  onTap: (){
+                 sendit(context);
+                  },
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.lock,
                         color: Colors.white,
+                      ),
+                      title: Text(
+                        'Logout',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -147,6 +154,17 @@ class Drawermain extends StatelessWidget {
     );
   }
 
+   sendit(BuildContext context) async {
+     SharedPreferences preferences = await SharedPreferences.getInstance();
+     await preferences.clear();
+     Navigator. pushAndRemoveUntil(
+       context,
+       MaterialPageRoute(
+         builder: (BuildContext context) =>QRViewExample(),
+       ),
+           (route) => false,
+     );
+   }
 }
 
 Widget get(){

@@ -44,7 +44,7 @@ class _VicechaormanState extends State<News> {
             child: ListTile(
               leading: Card(
                   elevation: 8,
-                  child: Icon(Icons.notification_important)),
+                  child: Icon(Icons.notification_important,size: 40,)),
               title: Text(newslist[index].postTitle),
               subtitle: Card(
                   elevation: 8,

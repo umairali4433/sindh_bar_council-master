@@ -14,10 +14,7 @@ class Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
-        Image.asset(
-          'assets/images/fill_1_copy.png',
-          height: 20.0,
-        ),
+
         SizedBox(
           width: 15.0,
         ),
