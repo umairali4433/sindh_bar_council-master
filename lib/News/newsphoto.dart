@@ -19,20 +19,20 @@ class Newsphoto extends StatelessWidget {
   }
 
    imageWithLoader(BuildContext context,String image) {
-    return Container(
-        height: MediaQuery.of(context).size.height,
-  child: Stack(children: <Widget>[
-  Center(child: CircularProgressIndicator()),
-  Center(
-  child: FadeInImage(
-  placeholder: AssetImage('assets/images/download.png'),
-  image: NetworkImage(
-      image
-  ),
-  width: MediaQuery.of(context).size.width,
+    return SingleChildScrollView(
+      child: Stack(children: <Widget>[
+      Center(child: CircularProgressIndicator()),
+      Center(
+      child: FadeInImage(
+      placeholder: AssetImage('assets/images/download.png'),
+      image: NetworkImage(
+            image
+      ),
+      width: MediaQuery.of(context).size.width,
 
-  fit: BoxFit.cover),
-  ),
-  ]));
+      fit: BoxFit.contain),
+      ),
+      ]),
+    );
   }
 }

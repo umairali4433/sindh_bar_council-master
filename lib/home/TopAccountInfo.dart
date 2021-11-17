@@ -65,6 +65,9 @@ class TopAccountInfo extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
+            SizedBox(
+              height: 10.0,
+            ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -82,6 +85,30 @@ class TopAccountInfo extends StatelessWidget {
                 SizedBox(
                   width: 10.0,
                 ),
+
+              ],
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+
+
+                Text(
+                  'District :'+user.disName,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.fade,
+                ),
+                SizedBox(
+                  width: 10.0,
+                ),
+
               ],
             ),
 

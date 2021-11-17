@@ -91,6 +91,16 @@ final List<Draw> drawerItems = [
   Draw(title: 'Chairman EXC Committee', icon: Icons.settings),
   Draw(title: 'SBC Staff', icon: Icons.settings),
 ];
+
+final List<Draw> grid = [
+  Draw(title: 'Karachi', icon: Icons.home),
+  Draw(title: 'Hyderababd', icon: Icons.search),
+  Draw(title: 'Sukkher', icon: Icons.person_pin_rounded),
+  Draw(title: 'Jacab', icon: Icons.speaker_notes),
+  Draw(title: 'Nawabshah', icon: Icons.settings),
+
+];
+
 class Trx {
    String type, number, amount, date;
   Trx({ this.type,  this.amount,  this.date,  this.number});

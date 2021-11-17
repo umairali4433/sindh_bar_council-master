@@ -11,7 +11,7 @@ class MembersUI extends StatefulWidget {
 }
 
 class _MembersState extends State<MembersUI> with TickerProviderStateMixin {
-   TabController _tabController;
+  TabController _tabController;
   bool flag = true;
   Future<Members> membersmodel;
   List<getmembers> getallmembers = [];
@@ -43,14 +43,14 @@ class _MembersState extends State<MembersUI> with TickerProviderStateMixin {
         ),
       ),
       body: TabBarView(
-controller: _tabController,
-children: [
-  Karachimember(getallmembers[0].members),
-  Karachimember(getallmembers[1].members),
-  Karachimember(getallmembers[2].members),
-  Karachimember(getallmembers[3].members),
-  Karachimember(getallmembers[4].members),
-],
+        controller: _tabController,
+        children: [
+          Karachimember(getallmembers[0].members),
+          Karachimember(getallmembers[1].members),
+          Karachimember(getallmembers[2].members),
+          Karachimember(getallmembers[3].members),
+          Karachimember(getallmembers[4].members),
+        ],
       ),
     );
   }
@@ -74,11 +74,11 @@ children: [
               child:Row(
                 children: [
                   CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage(getmemberslist[index].postImage),
+                    radius: 40,
+                    backgroundColor: Colors.white,
+                    backgroundImage: NetworkImage(getmemberslist[index].postImage),
 
-                      ),
+                  ),
                   SizedBox(width: 10),
                   Container(width: 1,height: MediaQuery.of(context).size.height*0.1, color: Colors.black),
                   SizedBox(width: 50),

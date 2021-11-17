@@ -227,7 +227,7 @@ Future<Myprofilemodel> qrcodelogin(String id, String disname) async  {
 Future<List<NotificationModel>> Notificationmethod() async  {
   List<NotificationModel> tagObjs;
   String geterror = '';
-  Uri uri = Uri.parse('https://sindhbarcouncil.org/index.php/news/update');
+  Uri uri = Uri.parse('https://sindhbarcouncil.org/index.php/news/news_text_api');
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){

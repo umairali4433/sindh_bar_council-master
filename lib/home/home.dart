@@ -24,13 +24,16 @@ import 'package:sindh_bar_council/drawer/Drawermain.dart';
 import 'package:sindh_bar_council/duedetail/Duedetail.dart';
 import 'package:sindh_bar_council/members/members.dart';
 import 'package:sindh_bar_council/models/Myprofilemodel.dart';
+import 'package:sindh_bar_council/models/Notification.dart';
 import 'package:sindh_bar_council/payment/payment.dart';
 
+import '../Base.dart';
 import '../constants.dart';
 import 'TopAccountInfo.dart';
 class Home_page extends StatefulWidget {
   int get;
   String param;
+
   @override
   _Home_pageState createState() => _Home_pageState();
 
@@ -40,6 +43,8 @@ class Home_page extends StatefulWidget {
 class _Home_pageState extends State<Home_page> {
   Myprofilemodel user;
   Map userMap;
+  // List<NotificationModel> notificationlist;
+  // Future<NotificationModel> gettaskfuture;
   bool flag = true;
   @override
   void initState() {
@@ -119,12 +124,12 @@ class _Home_pageState extends State<Home_page> {
       // return MembersUI();
     }
     else if(widget.get==13){
-      return Payment();
+      return Paymnent();
 
       // return MembersUI();
     }
     else if(widget.get==14){
-      return Payment();
+      return Paymnent();
       // return MembersUI();
     }
 
@@ -185,7 +190,7 @@ class _Home_pageState extends State<Home_page> {
                   shrinkWrap: true,
                   children: <Widget>[
                     Categories(),
-                    // LastTransactions(),
+                     // LastTransactions(notificationlist),
                   ],
                 ),
               )
@@ -235,6 +240,11 @@ class _Home_pageState extends State<Home_page> {
     setState(() {
       flag = false;
     });
+
+
+  }
+
+  void getnotification() {
 
 
   }
