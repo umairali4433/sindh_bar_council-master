@@ -41,17 +41,15 @@ class _CommitteesState extends State<Committees> {
             backgroundImage: NetworkImage(commiettlist[ind].committeeData[index].image),
           ),
           title: Text(commiettlist[ind].committeeData[index].memberName,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),),
-          subtitle: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10,),
-                Text(commiettlist[ind].committeeData[index].title),
-                SizedBox(height: 10,),
-                Text(commiettlist[ind].committeeData[index].mobile),
-              ],
-            ),
+          subtitle: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10,),
+              Text(commiettlist[ind].committeeData[index].title),
+              SizedBox(height: 10,),
+              Text(commiettlist[ind].committeeData[index].mobile),
+            ],
           ),
         );
       },

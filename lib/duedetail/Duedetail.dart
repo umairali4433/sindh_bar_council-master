@@ -6,9 +6,10 @@ import 'package:sindh_bar_council/models/due_detail_model.dart';
 import '../Base.dart';
 
 class Duedetail extends StatefulWidget {
-  final String regid,distname,image;
+  final String regid,distname,image,myhlc;
 
-  Duedetail(this.regid, this.distname,this.image);
+
+  Duedetail(this.regid, this.distname, this.image, this.myhlc);
 
   @override
   MapScreenState createState() => MapScreenState();
@@ -604,7 +605,7 @@ class MapScreenState extends State<Duedetail>
   }
 
   void getdata() {
-    gettaskfuture =  duedetail(widget.regid,widget.distname).then((value) {
+    gettaskfuture =  duedetail(widget.regid,widget.distname,widget.myhlc).then((value) {
       myprofiledata = value;
       setState(() {
         flag = false;

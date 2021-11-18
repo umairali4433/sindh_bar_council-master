@@ -110,7 +110,7 @@ class _Home_pageState extends State<Home_page> {
 
     else if(widget.get==10){
       if(flag == false){
-        return Duedetail(user.preRegNo,user.disName,user.advImage);
+        return Duedetail(user.preRegNo,user.disName,user.advImage,user.myhlc);
       }
       // return MembersUI();
     }
@@ -237,6 +237,7 @@ class _Home_pageState extends State<Home_page> {
     // Myprofilemodel user= jsonDecode(prefs.getString("userData"));
      userMap = jsonDecode(prefs.getString('userData'));
     user = Myprofilemodel.fromJson(userMap);
+    user.myhlc = prefs.getString('hlc');
     setState(() {
       flag = false;
     });

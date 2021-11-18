@@ -166,10 +166,10 @@ Future<Myprofilemodel> myprofile() async  {
 
 }
 
-Future<DueDetailModel> duedetail(String regid,disname) async  {
+Future<DueDetailModel> duedetail(String regid,disname,myhlc) async  {
   DueDetailModel tagObjs;
   String geterror = '';
-  Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_dues.php?password=sbc!!!&&sbc_reg_no='+regid+'&&dist_name='+disname);
+  Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_dues.php?password=sbc!!!&&sbc_reg_no='+regid+'&&dist_name='+disname+'&&enroll_type='+myhlc);
   var response2;
   response2=  await http.get(uri );
   if (response2.statusCode == 200){
@@ -197,13 +197,14 @@ Future<List<NewsModel>> newsdata() async  {
   }
 
 }
-Future<Myprofilemodel> qrcodelogin(String id, String disname) async  {
+Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
   Myprofilemodel tagObjs;
   String geterror = '';
   var params = {
     "password": 'sbc!!!',
     "sbc_reg_no":id,
     "dist_name":disname,
+     "enroll_type":hlc,
 
   };
   Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_reg_no.php');
@@ -215,6 +216,7 @@ Future<Myprofilemodel> qrcodelogin(String id, String disname) async  {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String user = jsonEncode(myprofilemodelFromJson(response2.body));
     prefs.setString('userData', user);
+    prefs.setString('hlc', hlc);
 
     return tagObjs;
   }

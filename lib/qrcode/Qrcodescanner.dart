@@ -135,7 +135,7 @@ class _QRViewExampleState extends State<QRViewExample> {
         result = scanData;
         List<String> getone = result.code.split('/');
         print("mere wala"+getone.toString());
-         getdata(getone[0],getone[2]);
+         getdata(getone[0],getone[1],getone[2]);
       });
     });
   }
@@ -155,11 +155,11 @@ class _QRViewExampleState extends State<QRViewExample> {
     super.dispose();
   }
 
-  void getdata(String id, String disname) {
+  void getdata(String id, String hlc,String disname) {
     setState(() {
       flag = true;
     });
-    getuserfuture =qrcodelogin(id,disname).then((value) async {
+    getuserfuture =qrcodelogin(id,hlc,disname).then((value) async {
       if(value != null){
         Navigator. pushAndRemoveUntil(
           context,

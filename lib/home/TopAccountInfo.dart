@@ -95,9 +95,8 @@ class TopAccountInfo extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
 
-
                 Text(
-                  'District :'+user.disName,
+                  'District :'+user.divName,
                   style: TextStyle(
                     fontSize: 14.0,
                     color: primaryColor,

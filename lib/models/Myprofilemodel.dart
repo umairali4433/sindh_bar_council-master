@@ -44,6 +44,7 @@ class Myprofilemodel {
   String status;
   String appLogin;
   String advImage;
+  String myhlc;
 
   factory Myprofilemodel.fromJson(Map<String, dynamic> json) => Myprofilemodel(
     preRegNo: json["pre_reg_no"] == null ? null : json["pre_reg_no"],
