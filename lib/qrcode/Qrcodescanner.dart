@@ -127,15 +127,30 @@ class _QRViewExampleState extends State<QRViewExample> {
   }
 
   void _onQRViewCreated(QRViewController controller) {
+    int a  = 0;
     setState(() {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
       setState(() {
         result = scanData;
+
+      if(a==3){
         List<String> getone = result.code.split('/');
-        print("mere wala"+getone.toString());
-         getdata(getone[0],getone[1],getone[2]);
+        if(getone.length !=3 || getone[0].contains('http')){
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Invalid QR Code'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
+          );
+          a = 0;
+
+        }
+        else{
+          getdata(getone[0],getone[1],getone[2]);
+          a = 0;
+        }
+
+      }
+        a++;
       });
     });
   }
@@ -148,7 +163,6 @@ class _QRViewExampleState extends State<QRViewExample> {
       );
     }
   }
-
   @override
   void dispose() {
     controller?.dispose();
@@ -160,7 +174,16 @@ class _QRViewExampleState extends State<QRViewExample> {
       flag = true;
     });
     getuserfuture =qrcodelogin(id,hlc,disname).then((value) async {
-      if(value != null){
+
+      if(value.preRegNo==null){
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('User not Found'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
+        );
+        setState(() {
+          flag = false;
+        });
+      }
+      else{
         Navigator. pushAndRemoveUntil(
           context,
           MaterialPageRoute(

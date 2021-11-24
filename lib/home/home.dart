@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sindh_bar_council/Aboutus/aboutus.dart';
 import 'package:sindh_bar_council/Chairman/Chairman.dart';
 import 'package:sindh_bar_council/Committees/Committees.dart';
 import 'package:sindh_bar_council/LastTransaction/LastTransactions.dart';
@@ -120,16 +121,18 @@ class _Home_pageState extends State<Home_page> {
     }
     else if(widget.get==12){
       return NotificationUI();
-
       // return MembersUI();
     }
     else if(widget.get==13){
       return Paymnent();
-
       // return MembersUI();
     }
     else if(widget.get==14){
       return Paymnent();
+      // return MembersUI();
+    }
+    else if(widget.get==15){
+      return Aboutus();
       // return MembersUI();
     }
 
@@ -166,9 +169,8 @@ class _Home_pageState extends State<Home_page> {
       )) ?? false;
     }
 
-
-
   }
+
   Stack buildStack(Size deviceSize) {
     return Stack(
       children: <Widget>[

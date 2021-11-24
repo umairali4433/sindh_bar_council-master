@@ -435,7 +435,7 @@ class MapScreenState extends State<Duedetail>
                                       ),
                                     ],
                                   )),
-                              Padding(
+                              myprofiledata.bFund!=null?Padding(
                                   padding: EdgeInsets.only(
                                       left: 25.0, right: 25.0, top: 25.0),
                                   child: new Row(
@@ -454,8 +454,8 @@ class MapScreenState extends State<Duedetail>
                                         ],
                                       ),
                                     ],
-                                  )),
-                              Padding(
+                                  )):SizedBox(),
+                              myprofiledata.bFund!=null?Padding(
                                   padding: EdgeInsets.only(
                                       left: 25.0, right: 25.0, top: 2.0),
                                   child: new Row(
@@ -465,8 +465,8 @@ class MapScreenState extends State<Duedetail>
                                         child:TextFormField(initialValue: ''),
                                       ),
                                     ],
-                                  )),
-                              Padding(
+                                  )):SizedBox(),
+                          myprofiledata.renewal != "" && myprofiledata.renewal!=null ?Padding(
                                   padding: EdgeInsets.only(
                                       left: 25.0, right: 25.0, top: 25.0),
                                   child: new Row(
@@ -485,8 +485,9 @@ class MapScreenState extends State<Duedetail>
                                         ],
                                       ),
                                     ],
-                                  )),
-                              Padding(
+                                  ))
+                                  :SizedBox(),
+                              myprofiledata.renewal!=null&& myprofiledata.renewal != ''?Padding(
                                   padding: EdgeInsets.only(
                                       left: 25.0, right: 25.0, top: 2.0),
                                   child: new Row(
@@ -496,7 +497,7 @@ class MapScreenState extends State<Duedetail>
                                         child:TextFormField(initialValue: myprofiledata.renewal),
                                       ),
                                     ],
-                                  )),
+                                  )):SizedBox(),
                               Padding(
                                   padding: EdgeInsets.only(
                                       left: 25.0, right: 25.0, top: 25.0),

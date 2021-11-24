@@ -93,6 +93,14 @@ class Drawermain extends StatelessWidget {
                             //statements;
                             }
                             break;
+                              //umair
+                              case 'About us': {
+                                navigatemethod(15,'About us',context);
+                                //statements;
+                              }
+                              break;
+
+
                               default: {
                                 //statements;
                               }

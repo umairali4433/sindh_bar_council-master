@@ -80,6 +80,7 @@ final List transactions = [
   ),
 ];
 int value = 0;
+
 final List<Draw> drawerItems = [
   Draw(title: 'Home', icon: Icons.home),
   Draw(title: 'Search', icon: Icons.search),
@@ -90,6 +91,9 @@ final List<Draw> drawerItems = [
   Draw(title: 'Vice Chairman', icon: Icons.settings),
   Draw(title: 'Chairman EXC Committee', icon: Icons.settings),
   Draw(title: 'SBC Staff', icon: Icons.settings),
+  Draw(title: 'About us', icon: Icons.add_business_outlined),
+
+
 ];
 
 final List<Draw> grid = [

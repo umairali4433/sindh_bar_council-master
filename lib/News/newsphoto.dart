@@ -24,7 +24,7 @@ class Newsphoto extends StatelessWidget {
       Center(child: CircularProgressIndicator()),
       Center(
       child: FadeInImage(
-      placeholder: AssetImage('assets/images/download.png'),
+      placeholder: AssetImage('assets/images/downlaod.png'),
       image: NetworkImage(
             image
       ),

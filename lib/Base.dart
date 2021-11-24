@@ -205,7 +205,6 @@ Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
     "sbc_reg_no":id,
     "dist_name":disname,
      "enroll_type":hlc,
-
   };
   Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_reg_no.php');
   final newURI = uri.replace(queryParameters: params);
@@ -213,10 +212,12 @@ Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
   response2=  await http.get(newURI );
   if (response2.statusCode == 200){
     tagObjs = myprofilemodelFromJson(response2.body);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String user = jsonEncode(myprofilemodelFromJson(response2.body));
-    prefs.setString('userData', user);
-    prefs.setString('hlc', hlc);
+    if (tagObjs.preRegNo !=null){
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String user = jsonEncode(myprofilemodelFromJson(response2.body));
+      prefs.setString('userData', user);
+      prefs.setString('hlc', hlc);
+    }
 
     return tagObjs;
   }
