@@ -217,6 +217,7 @@ Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
       String user = jsonEncode(myprofilemodelFromJson(response2.body));
       prefs.setString('userData', user);
       prefs.setString('hlc', hlc);
+      prefs.setString('dob', '');
     }
 
     return tagObjs;

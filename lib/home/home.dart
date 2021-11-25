@@ -44,24 +44,26 @@ class Home_page extends StatefulWidget {
 class _Home_pageState extends State<Home_page> {
   Myprofilemodel user;
   Map userMap;
+  DateTime pickdate;
   // List<NotificationModel> notificationlist;
   // Future<NotificationModel> gettaskfuture;
-  bool flag = true;
+  int flag = 0;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    pickdate = new DateTime.now();
     getsharedvalue();
   }
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
-    return flag?Stack(  children: <Widget>[ Center(child:Text('Please wait'))]): WillPopScope(
+    return  WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        drawer: Drawermain(user.advImage,user.advName),
+        drawer: flag==2?Drawermain(user.advImage,user.advName):Text('asd'),
         appBar: buildAppBar(),
-        body: done(deviceSize),
+        body: flag==0?Stack(children: <Widget>[ Center(child:Text('Please wait'))]):flag==1?Center(child: Text('Incorrect Date of Birth please Try Again'),):done(deviceSize),
       ),
     );
   }
@@ -234,23 +236,36 @@ class _Home_pageState extends State<Home_page> {
       // ],
     );
   }
+
   Future<void> getsharedvalue() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    // Myprofilemodel user= jsonDecode(prefs.getString("userData"));
-     userMap = jsonDecode(prefs.getString('userData'));
-    user = Myprofilemodel.fromJson(userMap);
-    user.myhlc = prefs.getString('hlc');
-    setState(() {
-      flag = false;
+    DateTime get = new DateTime(1975,02,1);
+    SharedPreferences prefs = await SharedPreferences.getInstance().then((value) async {
+      userMap = jsonDecode(value.getString('userData'));
+      user = Myprofilemodel.fromJson(userMap);
+      final DateTime picked = await showDatePicker(
+        helpText: 'Please Select you date of Birth for the Confirmation',
+          context: context,
+          initialDate: get,
+          firstDate: DateTime(1950, 8),
+          lastDate: DateTime(pickdate.year));
+      if(user.dob == picked){
+        flag = 2;
+      }
+      else{
+        flag = 1;
+      }
+      user.myhlc = value.getString('hlc');
+      setState(() {
+        flag;
+      });
     });
+    // Myprofilemodel user= jsonDecode(prefs.getString("userData"));
 
-
-  }
-
-  void getnotification() {
 
 
   }
+
+
 
 
 }

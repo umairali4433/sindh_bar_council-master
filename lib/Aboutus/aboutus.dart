@@ -12,11 +12,12 @@ class Aboutus extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Image.asset('assets/images/splashlogo.png'),
+            Image.asset('assets/images/chairman.jpeg',height: MediaQuery.of(context).size.height*0.3,),
             SizedBox(height: 20,),
+            Text('Arif Dawood Member and Chairman Sbc',style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18,color: Colors.green)),
             Expanded(
               child: Text(
-                'Arif Dawood Member and Chairman Sbc Sahulat App is designed and developed with the support of Mr Arif Dawood, member and chairman SBC. The main objective behind the creation of this application is to provide ease and comfort to the members as well as to keep them updated with all the notifications and updates from the bar council. The app is available on both android and iOS platform. "I wanted to create a platform where the members of council can stay connected and able to perform different functions with click of a button"- Arif Dawood',
+                '\n Sahulat App is designed and developed with the support of Arif Dawood, Member and chairman SBC.\n\n The main objective behind the creation of this application is to provide ease and comfort to the members as well as to keep them updated with all the notifications and updates from the bar council. The app is available on both android and iOS platform.\n\n "I wanted to create a platform where the members of council can stay connected and able to perform different functions with click of a button"- Arif Dawood Chairman Executive Sindh Bar council',
                 overflow: TextOverflow.clip,
                 style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),
               ),
