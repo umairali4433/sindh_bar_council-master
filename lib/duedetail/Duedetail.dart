@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sindh_bar_council/models/Myprofilemodel.dart';
 import 'package:sindh_bar_council/models/due_detail_model.dart';
 
@@ -605,12 +606,17 @@ class MapScreenState extends State<Duedetail>
     );
   }
 
-  void getdata() {
-    gettaskfuture =  duedetail(widget.regid,widget.distname,widget.myhlc).then((value) {
-      myprofiledata = value;
-      setState(() {
-        flag = false;
-      });
-    });
+  Future<void> getdata() async {
+     SharedPreferences prefs = await SharedPreferences.getInstance().then((value) {
+       value.getString('hlc');
+       gettaskfuture =  duedetail(widget.regid,widget.distname,value.getString('hlc')).then((value) {
+         myprofiledata = value;
+         setState(() {
+           flag = false;
+         });
+       });
+     });
+
+
   }
 }

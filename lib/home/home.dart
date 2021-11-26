@@ -45,6 +45,7 @@ class _Home_pageState extends State<Home_page> {
   Myprofilemodel user;
   Map userMap;
   DateTime pickdate;
+  SharedPreferences prefs;
   // List<NotificationModel> notificationlist;
   // Future<NotificationModel> gettaskfuture;
   int flag = 0;
@@ -61,9 +62,23 @@ class _Home_pageState extends State<Home_page> {
     return  WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        drawer: flag==2?Drawermain(user.advImage,user.advName):Text('asd'),
+        drawer: flag==2?Drawermain(user.advImage,user.advName):Text('Please Try again',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
         appBar: buildAppBar(),
-        body: flag==0?Stack(children: <Widget>[ Center(child:Text('Please wait'))]):flag==1?Center(child: Text('Incorrect Date of Birth please Try Again'),):done(deviceSize),
+        body: flag==0?Stack(children: <Widget>[ Center(child:Text('Please wait'))]):flag==1?Center(child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              Text('Incorrect Date of Birth please Try Again',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+              Icon(Icons.refresh),
+              ElevatedButton(
+                onPressed: (){
+                  getsharedvalue();
+                },
+                child: Text('Try Again'),
+              )
+            ],
+          ),
+        ),):done(deviceSize),
       ),
     );
   }
@@ -106,13 +121,13 @@ class _Home_pageState extends State<Home_page> {
       // return MembersUI();
     }
     else if(widget.get==9){
-      if(flag == false){
+      if(flag == 2){
         return Myprofile(user);
       }
     }
 
     else if(widget.get==10){
-      if(flag == false){
+      if(flag == 2){
         return Duedetail(user.preRegNo,user.disName,user.advImage,user.myhlc);
       }
       // return MembersUI();
@@ -238,26 +253,12 @@ class _Home_pageState extends State<Home_page> {
   }
 
   Future<void> getsharedvalue() async {
-    DateTime get = new DateTime(1975,02,1);
-    SharedPreferences prefs = await SharedPreferences.getInstance().then((value) async {
+
+     prefs = await SharedPreferences.getInstance().then((value) async {
       userMap = jsonDecode(value.getString('userData'));
       user = Myprofilemodel.fromJson(userMap);
-      final DateTime picked = await showDatePicker(
-        helpText: 'Please Select you date of Birth for the Confirmation',
-          context: context,
-          initialDate: get,
-          firstDate: DateTime(1950, 8),
-          lastDate: DateTime(pickdate.year));
-      if(user.dob == picked){
-        flag = 2;
-      }
-      else{
-        flag = 1;
-      }
-      user.myhlc = value.getString('hlc');
-      setState(() {
-        flag;
-      });
+
+      datemethod(value);
     });
     // Myprofilemodel user= jsonDecode(prefs.getString("userData"));
 
@@ -265,7 +266,40 @@ class _Home_pageState extends State<Home_page> {
 
   }
 
+  Future<void> datemethod(SharedPreferences value) async {
+    if(value.getString('dob')!= ''){
+      setState(() {
+        flag = 2;
+      });
+    }
+    else{
+      DateTime get = new DateTime(1975,02,1);
+      final DateTime picked = await showDatePicker(
+          helpText: 'Please Select you date of Birth for the Confirmation',
+          context: context,
+          initialDate: get,
+          firstDate: DateTime(1950, 8),
+          lastDate: DateTime(pickdate.year));
+      print(user.dob);
+      if(user.dob == picked){
+        flag = 2;
+        value.setString('dob', 'done');
+      }
+      else{
+        flag = 1;
+      }
+       user.myhlc = value.getString('hlc');
+      setState(() {
+        flag;
+      });
+    }
+
+  }
+
+
+
 
 
 
 }
+
