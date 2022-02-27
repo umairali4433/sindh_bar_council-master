@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -145,7 +146,12 @@ class _QRViewExampleState extends State<QRViewExample> {
 
         }
         else{
-          getdata(getone[0],getone[1],getone[2]);
+          FirebaseMessaging.instance.getToken().then((value) {
+            getdata(getone[0],getone[1],getone[2],value.toString());
+            // token = value;
+            // print('my device token '+token);
+          });
+
           a = 0;
         }
 
@@ -169,11 +175,11 @@ class _QRViewExampleState extends State<QRViewExample> {
     super.dispose();
   }
 
-  void getdata(String id, String hlc,String disname) {
+  void getdata(String id, String hlc,String disname,deviceid) {
     setState(() {
       flag = true;
     });
-    getuserfuture =qrcodelogin(id,hlc,disname).then((value) async {
+    getuserfuture =qrcodelogin(id,hlc,disname,deviceid).then((value) async {
 
       if(value.preRegNo==null){
         ScaffoldMessenger.of(context).showSnackBar(
@@ -184,6 +190,8 @@ class _QRViewExampleState extends State<QRViewExample> {
         });
       }
       else{
+
+
         Navigator. pushAndRemoveUntil(
           context,
           MaterialPageRoute(

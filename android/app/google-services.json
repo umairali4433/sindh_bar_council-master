@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "710342234846",
+    "firebase_url": "https://notification-by-sbc-default-rtdb.firebaseio.com",
+    "project_id": "notification-by-sbc",
+    "storage_bucket": "notification-by-sbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710342234846:android:2dd9e2d5a46a4018c8e84f",
+        "android_client_info": {
+          "package_name": "com.dts.flutterfcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710342234846-7gtuuo4vclomj8nn8g8bodk6poqabcik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAydYibYkHRvM2HWPtiF0wTgnyfYD0sO-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710342234846-7gtuuo4vclomj8nn8g8bodk6poqabcik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710342234846:android:78a8e92c9006fe8ec8e84f",
+        "android_client_info": {
+          "package_name": "com.tv.sindh_bar_council"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710342234846-7gtuuo4vclomj8nn8g8bodk6poqabcik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAydYibYkHRvM2HWPtiF0wTgnyfYD0sO-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710342234846-7gtuuo4vclomj8nn8g8bodk6poqabcik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

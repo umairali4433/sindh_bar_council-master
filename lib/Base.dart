@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sindh_bar_council/models/Committemodel.dart';
 import 'package:sindh_bar_council/models/Notification.dart';
@@ -151,6 +152,10 @@ Future<List<SbcStaffModel>> sbc_staff() async  {
 }
 
 Future<Myprofilemodel> myprofile() async  {
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  _firebaseMessaging.getToken().then((token){
+    print(token);
+  });
   Myprofilemodel tagObjs;
   String geterror = '';
   Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_reg_no.php?password=sbc!!!&&sbc_reg_no=856&&dist_name=NAUSHAHRO%20FEROZE');
@@ -197,7 +202,7 @@ Future<List<NewsModel>> newsdata() async  {
   }
 
 }
-Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
+Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname,deviceid) async  {
   Myprofilemodel tagObjs;
   String geterror = '';
   var params = {
@@ -205,6 +210,7 @@ Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
     "sbc_reg_no":id,
     "dist_name":disname,
      "enroll_type":hlc,
+    "device_id":deviceid
   };
   Uri uri = Uri.parse('https://advocates.sindhbarcouncil.org/advocate_json_app_reg_no.php');
   final newURI = uri.replace(queryParameters: params);
@@ -212,6 +218,7 @@ Future<Myprofilemodel> qrcodelogin(String id, hlc,String disname) async  {
   response2=  await http.get(newURI );
   if (response2.statusCode == 200){
     tagObjs = myprofilemodelFromJson(response2.body);
+    print(response2.body);
     if (tagObjs.preRegNo !=null){
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String user = jsonEncode(myprofilemodelFromJson(response2.body));
