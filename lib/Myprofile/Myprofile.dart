@@ -40,44 +40,45 @@ class MapScreenState extends State<Myprofile>
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  ClipPath(
-                    clipper: MyClipper(),
-                    child: Container(
-                      height: 300.0,
-                      decoration: BoxDecoration(
-                        gradient: linearGradient,
-                        color: primaryColor,
-                        //image: DecorationImage(image: NetworkImage('https://www.viajejet.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada-1440x810.jpg'))
-                      ),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 20,
-                            ),
-                            CircleAvatar(
-                              backgroundColor: Colors.white,
-                              radius: 70,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.green,
-                                radius: 68,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  radius: 60,
-                                  child: CircleAvatar(
-                                    radius: 58,
-                                    backgroundImage: myprofiledata.advImage==null?Image.asset('assets/images/placeholder.png'):NetworkImage(myprofiledata.advImage),
-                                  ),
+                  Container(
 
+                    height: 300.0,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/backgroundprofile.png'),
+                        fit: BoxFit.fill,
+                      ),
+                      gradient: linearGradient,
+                      //image: DecorationImage(image: NetworkImage('https://www.viajejet.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada-1440x810.jpg'))
+                    ),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 70,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.green,
+                              radius: 68,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 60,
+                                child: CircleAvatar(
+                                  radius: 58,
+                                  backgroundImage: myprofiledata.advImage==null?Image.asset('assets/images/placeholder.png'):NetworkImage(myprofiledata.advImage),
                                 ),
+
                               ),
                             ),
-                            SizedBox(height: 20,),
-                            Text(myprofiledata.advName,style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
-                            SizedBox(height: 5,),
-                            Text(myprofiledata.enrollType,style: TextStyle(color: Colors.white,fontSize: 20),),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 20,),
+                          Text(myprofiledata.advName,style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.bold),),
+                          SizedBox(height: 5,),
+                          Text(myprofiledata.enrollType,style: TextStyle(color: Colors.white,fontSize: 20),),
+                        ],
                       ),
                     ),
                   ),

@@ -105,7 +105,14 @@ class _Home_pageState extends State<Home_page> {
     return  WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        drawer: flag==2?Drawermain(user.advImage,user.advName):Text('Please Try again',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
+        drawer: flag==2?
+        Theme(
+            data: Theme.of(context).copyWith(
+              // Set the transparency here
+              canvasColor: Colors.white.withOpacity(0.6), //or any other color you want. e.g Colors.blue.withOpacity(0.5)
+            ),
+            child: Drawermain(user.advImage,user.advName,user))
+            :Text('Please Try again',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),),
         appBar: buildAppBar(),
         body: flag==0?Stack(children: <Widget>[ Center(child:Text('Please wait'))]):flag==1?Center(child: Padding(
           padding: const EdgeInsets.only(top: 50),

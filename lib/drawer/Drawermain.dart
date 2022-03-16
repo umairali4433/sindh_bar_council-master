@@ -10,23 +10,30 @@ import '../constants.dart';
 import '../constants.dart';
 import '../home/ProfileImage.dart';
 import '../home/home.dart';
+import '../models/Myprofilemodel.dart';
 
 class Drawermain extends StatelessWidget {
   String image,name;
+  Myprofilemodel user;
 
 
-  Drawermain(this.image,this.name);
+  Drawermain(this.image,this.name,this.user);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: <Widget>[
-          buildUserInfo(context,image,name),
+          buildUserInfo(context,image,name,user),
+      Container(
+        padding: EdgeInsets.only(top: 25,bottom: 25),
+        width: MediaQuery.of(context).size.width*.6,
+        child: Divider(color: drawerColoSecondary,thickness: 2),
+      ),
       Expanded(
         child: SingleChildScrollView(
           child: Container(
-            color: drawerColoSecondary,
+
             padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,14 +115,14 @@ class Drawermain extends StatelessWidget {
                             }
 
                           },
-                          leading: Icon(
-                            item.icon,
-                            color: Colors.white70,
-                          ),
-                          title: Text(
-                            item.title,
-                            style: TextStyle(
-                              color: Colors.white70,
+
+                          title: Padding(
+                            padding: const EdgeInsets.only(left: 16.0),
+                            child: Text(
+                              item.title,
+                              style: TextStyle(
+
+                              ),
                             ),
                           ),
                         ),
@@ -126,20 +133,30 @@ class Drawermain extends StatelessWidget {
                   onTap: (){
                  sendit(context);
                   },
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.lock,
-                        color: Colors.white,
+                  child: Column(
+
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(top: 25,bottom: 25),
+                        width: MediaQuery.of(context).size.width*.6,
+                        child: Divider(color: drawerColoSecondary,thickness: 2),
                       ),
-                      title: Text(
-                        'Logout',
-                        style: TextStyle(
-                          color: Colors.white,
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: ListTile(
+                          leading: Icon(
+                            Icons.lock,
+
+                          ),
+                          title: Text(
+                            'Logout',
+                            style: TextStyle(
+
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ],
@@ -195,12 +212,12 @@ Widget get(){
                       },
                       leading: Icon(
                         item.icon,
-                        color: Colors.white70,
+
                       ),
                       title: Text(
                         item.title,
                         style: TextStyle(
-                          color: Colors.white70,
+
                         ),
                       ),
                     ),
@@ -210,7 +227,7 @@ Widget get(){
             ListTile(
               leading: Icon(
                 Icons.lock,
-                color: Colors.white,
+
               ),
               title: Text(
                 'Logout',
@@ -242,12 +259,12 @@ final buildDrawerItem = Flexible(
                     },
                     leading: Icon(
                       item.icon,
-                      color: Colors.white70,
+
                     ),
                     title: Text(
                       item.title,
                       style: TextStyle(
-                        color: Colors.white70,
+
                       ),
                     ),
                   ),
@@ -257,12 +274,12 @@ final buildDrawerItem = Flexible(
           ListTile(
             leading: Icon(
               Icons.lock,
-              color: Colors.white,
+
             ),
             title: Text(
               'Logout',
               style: TextStyle(
-                color: Colors.white,
+
               ),
             ),
           ),
@@ -272,60 +289,32 @@ final buildDrawerItem = Flexible(
   ),
 );
 
-buildUserInfo(context,String image,String name) => Container(
-  color: drawerColoPrimary,
+buildUserInfo(context,String image,String name,Myprofilemodel user) => Container(
+
   //height: deviceSize.height * 0.3,
-  padding: EdgeInsets.only(bottom: 25.0),
+  padding: EdgeInsets.only(top: 100,left: 25),
   child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     mainAxisSize: MainAxisSize.min,
     children: <Widget>[
-      ListTile(
-        onTap: () {
-          Navigator.of(context).pop();
-        },
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text(
-            'Good Afternoon!',
-            style: TextStyle(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w300,
-              color: Colors.white,
-            ),
-          ),
-          SizedBox(
-            width: 5,
-          ),
 
-        ],
-      ),
-      SizedBox(
-        height: 15.0,
-      ),
-      ProfileImage(
-        color: Colors.white,
-        height: 70.0,
-        width: 70.0,
-        image: image,
-      ),
-      SizedBox(
-        height: 15.0,
-      ),
-      Text(
-        name.toUpperCase(),
-        style: TextStyle(
-          fontSize: 15.0,
-          fontWeight: FontWeight.w300,
-          color: Colors.white,
+
+
+      ListTile(
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(image),
+            radius: 25,),
+        title: Text(name),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Reg No: '+user.preRegNo),
+            Text('District: '+user.disName)
+          ],
         ),
-      )
+      ),
+
+
     ],
   ),
 );
