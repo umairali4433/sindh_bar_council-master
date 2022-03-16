@@ -20,16 +20,14 @@ class Categories extends StatelessWidget {
         SizedBox(
           height: 10.0,
         ),
-        Heading(
-          'Please make a selection',
-        ),
+
         SizedBox(
           height: 25.0,
         ),
         Flexible(
           fit: FlexFit.loose,
           child: GridView.count(
-            crossAxisCount: 3,
+            crossAxisCount:3,
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             // primary: true,

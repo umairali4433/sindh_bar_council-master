@@ -15,9 +15,6 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
-
-
         switch(widget.title) {
           case 'My Profile': {
             navigatemethod(9,'My Profile');
@@ -70,8 +67,15 @@ class _CategoryState extends State<Category> {
 
       },
       child: Card(
+        color: Colors.green,
+        shape: setroundedrectangle(),
         margin: EdgeInsets.only(right: 10.0, bottom: 10.0),
         child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(80),
+            ),
+          ),
           height: 140.0,
           width: 130.0,
           child: Column(
@@ -83,7 +87,7 @@ class _CategoryState extends State<Category> {
                   ? Image.asset(
                 widget.image,
                 height: 50.0,
-                color: Colors.red[900],
+
               )
                   : Image.asset(
                 widget.image,
@@ -98,6 +102,7 @@ class _CategoryState extends State<Category> {
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
+                  color: Colors.white
                 ),
               )
             ],
@@ -116,5 +121,31 @@ class _CategoryState extends State<Category> {
       ),
           (route) => false,
     );
+  }
+
+  setroundedrectangle() {
+    if(widget.title=='My Profile'){
+      return RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft:Radius.circular(15.0) ),
+      );
+    }
+    else    if(widget.title=='News'){
+    return RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(topRight:Radius.circular(15.0) ),
+    );
+    }
+
+
+    else if(widget.title=='Biometric'){
+    return RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(bottomLeft:Radius.circular(15.0) ),
+    );
+    }
+    else if(widget.title=='Payment'){
+      return RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(bottomRight:Radius.circular(15.0) ),
+      );
+    }
+
   }
 }

@@ -5,6 +5,7 @@
 
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -233,9 +234,14 @@ class _Home_pageState extends State<Home_page> {
   Stack buildStack(Size deviceSize) {
     return Stack(
       children: <Widget>[
-        Container(
-          color: primaryColor,
-          height: deviceSize.height * 0.1,
+        ClipPath(
+          clipper: CurvedBottomClipper(),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: linearGradient
+            ),
+            height: deviceSize.height * 0.15,
+          ),
         ),
         Container(
           margin: EdgeInsets.symmetric(
@@ -243,7 +249,16 @@ class _Home_pageState extends State<Home_page> {
           ),
           child: Column(
             children: <Widget>[
-              Center(child: TopAccountInfo(user)),
+              SizedBox(height: 40,),
+              Container(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Center(child: TopAccountInfo(user))),
+              SizedBox(height: 8,),
+              Text(user.advName,style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.black),),
+              SizedBox(height: 3,),
+              Text('Reg No: '+user.preRegNo,style: TextStyle(fontSize: 18,color: Colors.grey),),
+              SizedBox(height: 3,),
+              Text('District: '+user.divName,style: TextStyle(fontSize: 18,color: Colors.grey),),
               Flexible(
                 fit: FlexFit.tight,
                 child: ListView(
@@ -254,7 +269,8 @@ class _Home_pageState extends State<Home_page> {
                      // LastTransactions(notificationlist),
                   ],
                 ),
-              )
+              ),
+
             ],
           ),
         )
@@ -308,6 +324,7 @@ class _Home_pageState extends State<Home_page> {
 
   }
 
+
   Future<void> datemethod(SharedPreferences value) async {
     if(value.getString('dob')!= ''){
       setState(() {
@@ -343,5 +360,41 @@ class _Home_pageState extends State<Home_page> {
 
 
 
+}
+class CurvedBottomClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    // I've taken approximate height of curved part of view
+    // Change it if you have exact spec for it
+    final roundingHeight = size.height ;
+
+    // this is top part of path, rectangle without any rounding
+    final filledRectangle =
+    Rect.fromLTRB(0, 0, size.width, size.height -roundingHeight);
+
+    // this is rectangle that will be used to draw arc
+    // arc is drawn from center of this rectangle, so it's height has to be twice roundingHeight
+    // also I made it to go 5 units out of screen on left and right, so curve will have some incline there
+    final roundingRectangle = Rect.fromLTRB(
+        -50, size.height - roundingHeight *2, size.width + 50, size.height);
+
+    final path = Path();
+    path.addRect(filledRectangle);
+
+    // so as I wrote before: arc is drawn from center of roundingRectangle
+    // 2nd and 3rd arguments are angles from center to arc start and end points
+    // 4th argument is set to true to move path to rectangle center, so we don't have to move it manually
+    path.arcTo(roundingRectangle, pi, -pi, true);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    // returning fixed 'true' value here for simplicity, it's not the part of actual question, please read docs if you want to dig into it
+    // basically that means that clipping will be redrawn on any changes
+    return true;
+  }
 }
 

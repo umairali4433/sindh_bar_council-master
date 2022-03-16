@@ -9,9 +9,25 @@ const Color drawerColoPrimary = Colors.green;
 const Color drawerColoSecondary = Colors.green;
 final String path = 'assets/images/';
 
+
+ const Color greyLightColor = Color.fromRGBO(238, 238, 237, 1);
+ const Color lightShadowColor = Color(0xFFA2A2A2);
+  LinearGradient linearGradient = LinearGradient(
+  colors: <Color>[
+    begin,
+    end
+  ],
+  begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+);
+
+
+ const Color begin = Color.fromRGBO(58,131,60, 1);
+ const Color end = Color.fromRGBO(52,179,55,1);
+
 final List categories = [
   {'image': path + 'ic_username.png', 'title': 'My Profile'},
-  {'image': path + 'esewa.jpg', 'title': 'Dues Detail'},
+  {'image': path + 'esewa.png', 'title': 'Dues Detail'},
   {'image': path + 'ic_payments_64_4.png', 'title': 'News'},
   {'image': path + 'ic_transfer_32_4.png', 'title': 'Biometric'},
   {'image': path + 'ic_sch_payment_64_4.png', 'title': 'Notifications'},

@@ -19,31 +19,46 @@ class TopAccountInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
-    return Card(
-      elevation: 3.0,
-      margin: EdgeInsets.symmetric(
-        //horizontal: deviceSize.width * 0.03,
-        vertical: deviceSize.height * 0.02,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [BoxShadow(blurRadius: 1, color: Colors.white, spreadRadius: 1)],
       ),
-      child: Container(
-        alignment: Alignment.center,
-        height: deviceSize.height * 0.2,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                ProfileImage(image: user.advImage,),
-                getdata(),
-              ],
-            ),
-
-          ],
+      child: CircleAvatar(
+        backgroundColor: Colors.white,
+        radius: 70,
+        child: CircleAvatar(
+          radius: 67,
+          backgroundImage: NetworkImage(user.advImage),
         ),
       ),
     );
+    // return Card(
+    //   elevation: 3.0,
+    //   margin: EdgeInsets.symmetric(
+    //     //horizontal: deviceSize.width * 0.03,
+    //     vertical: deviceSize.height * 0.02,
+    //   ),
+    //   child: Container(
+    //     alignment: Alignment.center,
+    //     height: deviceSize.height * 0.2,
+    //     child: Column(
+    //       mainAxisSize: MainAxisSize.min,
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       children: <Widget>[
+    //         Row(
+    //           mainAxisSize: MainAxisSize.min,
+    //           children: <Widget>[
+    //             ProfileImage(image: user.advImage,),
+    //             getdata(),
+    //           ],
+    //         ),
+    //
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 
   Widget getdata(){
