@@ -74,7 +74,7 @@ class MapScreenState extends State<Duedetail>
                               radius: 60,
                               child: CircleAvatar(
                                 radius: 58,
-                                backgroundImage: NetworkImage('https://images.unsplash.com/photo-1646903232892-4a5d5451231a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'),
+                                backgroundImage: myprofiledata.advImage==null?NetworkImage('https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png'):NetworkImage(myprofiledata.advImage),
                               ),
 
                             ),
