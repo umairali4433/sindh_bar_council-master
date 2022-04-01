@@ -148,6 +148,9 @@ class _QRViewExampleState extends State<QRViewExample> {
         else{
           FirebaseMessaging.instance.getToken().then((value) {
             getdata(getone[0],getone[1],getone[2],value.toString());
+            controller.dispose();
+            return 0;
+
             // token = value;
             // print('my device token '+token);
           });

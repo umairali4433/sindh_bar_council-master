@@ -32,6 +32,10 @@ final List categories = [
   {'image': path + 'ic_transfer_32_4.png', 'title': 'Biometric'},
   {'image': path + 'ic_sch_payment_64_4.png', 'title': 'Notifications'},
   {'image': path + 'ic_scan2pay_64_4.png', 'title': 'Payment'},
+  {'image': path + '112233.png', 'title': 'BioMetric Voting'},
+  {'image': path + 'lectures.png', 'title': 'Video Lectures'},
+
+
 ];
 final List transactions = [
   Trx(

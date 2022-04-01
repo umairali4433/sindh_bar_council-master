@@ -56,6 +56,16 @@ class _CategoryState extends State<Category> {
             //statements;
           }
           break;
+          case 'BioMetric Voting': {
+            navigatemethod(13,'BioMetric Voting');
+            //statements;
+          }
+          break;
+          case 'Video Lectures': {
+            navigatemethod(13,'Video Lectures');
+            //statements;
+          }
+          break;
 
           default: {
             //statements;
