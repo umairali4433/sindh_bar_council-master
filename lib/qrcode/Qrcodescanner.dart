@@ -154,10 +154,8 @@ class _QRViewExampleState extends State<QRViewExample> {
             // token = value;
             // print('my device token '+token);
           });
-
           a = 0;
         }
-
       }
         a++;
       });

@@ -30,6 +30,7 @@ import 'package:sindh_bar_council/members/members.dart';
 import 'package:sindh_bar_council/models/Myprofilemodel.dart';
 import 'package:sindh_bar_council/models/Notification.dart';
 import 'package:sindh_bar_council/payment/payment.dart';
+import 'package:sindh_bar_council/qrcode/Qrcodescanner.dart';
 
 import '../Base.dart';
 import '../constants.dart';
@@ -97,7 +98,7 @@ class _Home_pageState extends State<Home_page> {
             });
       }
     });
-    getsharedvalue();
+    getsharedvalue('sdfsdf');
   }
   @override
   Widget build(BuildContext context) {
@@ -122,7 +123,7 @@ class _Home_pageState extends State<Home_page> {
               Icon(Icons.refresh),
               ElevatedButton(
                 onPressed: (){
-                  getsharedvalue();
+                  getsharedvalue('see');
                 },
                 child: Text('Try Again'),
               )
@@ -317,14 +318,28 @@ class _Home_pageState extends State<Home_page> {
     );
   }
 
-  Future<void> getsharedvalue() async {
+  Future<void> getsharedvalue(String check) async {
 
-     prefs = await SharedPreferences.getInstance().then((value) async {
-      userMap = jsonDecode(value.getString('userData'));
-      user = Myprofilemodel.fromJson(userMap);
+    if(check=='see'){
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.clear();
+      Navigator. pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) =>QRViewExample(),
+        ),
+            (route) => false,
+      );
+    }
+    else{
+      prefs = await SharedPreferences.getInstance().then((value) async {
+        userMap = jsonDecode(value.getString('userData'));
+        user = Myprofilemodel.fromJson(userMap);
 
-      datemethod(value);
-    });
+        datemethod(value);
+      });
+    }
+
     // Myprofilemodel user= jsonDecode(prefs.getString("userData"));
 
 
