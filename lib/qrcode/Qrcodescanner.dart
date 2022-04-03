@@ -137,25 +137,65 @@ class _QRViewExampleState extends State<QRViewExample> {
         result = scanData;
 
       if(a==3){
-        List<String> getone = result.code.split('/');
-        if(getone.length !=3 || getone[0].contains('http')){
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Invalid QR Code'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
-          );
-          a = 0;
+        // List<String> getone = result.code.split('/');
 
-        }
-        else{
+        if(result.code.contains('http')){
+          List<String> getonenew = result.code.split('http://');
+          List<String> getonenewfordata = getonenew[1].split('/');
+
+
+        if(getonenewfordata.length == 3){
           FirebaseMessaging.instance.getToken().then((value) {
-            getdata(getone[0],getone[1],getone[2],value.toString());
+            getdata(getonenewfordata[0],getonenewfordata[1],getonenewfordata[2],value.toString());
             controller.dispose();
             return 0;
 
             // token = value;
             // print('my device token '+token);
           });
+        }
+        else{
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Invalid QR Code'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
+            );
+        }
           a = 0;
         }
+        else{
+          List<String> getonenew = result.code.split('/');
+          if(getonenew.length == 3){
+            FirebaseMessaging.instance.getToken().then((value) {
+              getdata(getonenew[0],getonenew[1],getonenew[2],value.toString());
+              controller.dispose();
+              return 0;
+
+              // token = value;
+              // print('my device token '+token);
+            });
+          }
+          else{
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Invalid QR Code'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
+            );
+          }
+          // List<String> getonenewfordata = getonenew[1].split('/');
+
+
+
+          a = 0;
+        }
+
+        // if(getone.length !=3 ){
+        //   ScaffoldMessenger.of(context).showSnackBar(
+        //     const SnackBar(content: Text('Invalid QR Code'),backgroundColor: Colors.red,duration:  Duration(seconds: 1, milliseconds: 500),),
+        //   );
+        //   a = 0;
+        //
+        // }
+        // else
+        //   {
+        //
+        //   }
       }
         a++;
       });
